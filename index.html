@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torquato.org - Estrutura para Eventos & Acessibilidade</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-universal-access"></i>
+            <span>TORQUATO.ORG</span>
+            <small>Estrutura & Acessibilidade em Eventos</small>
+        </div>
+        <div class="actions">
+            <button class="btn btn-outline" id="reset-btn"><i class="fa-solid fa-rotate-left"></i> Limpar
+                Seleção</button>
+            <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimir /
+                PDF</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Painel Principal de Conteúdo -->
+        <section class="content-area">
+
+            <!-- Barra de Busca e Filtros -->
+            <div class="filter-bar card">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="Buscar serviço ou item...">
+                </div>
+                <div class="badge-filters">
+                    <button class="filter-chip active" data-filter="all">Todos</button>
+                    <button class="filter-chip essencial" data-filter="ESSENCIAL">🟩 Essencial</button>
+                    <button class="filter-chip recomendado" data-filter="RECOMENDADO">🟨 Recomendado</button>
+                    <button class="filter-chip premium" data-filter="PREMIUM">🟪 Premium</button>
+                </div>
+            </div>
+
+            <!-- Tabela / Lista de Serviços por Categoria -->
+            <div id="services-container">
+                <!-- Inserido dinamicamente via JS -->
+            </div>
+        </section>
+
+        <!-- Sidebar / Resumo Financeiro Fixado -->
+        <aside class="sidebar">
+            <div class="card summary-card">
+                <h2><i class="fa-solid fa-calculator"></i> Resumo Financeiro</h2>
+
+                <div class="summary-breakdown">
+                    <div class="summary-row essencial">
+                        <span>🟩 Essenciais</span>
+                        <strong id="total-essenciais">R$ 0,00</strong>
+                    </div>
+                    <div class="summary-row recomendado">
+                        <span>🟨 Recomendados</span>
+                        <strong id="total-recomendados">R$ 0,00</strong>
+                    </div>
+
+                    <div class="summary-row premium">
+                        <span>🟪 Premium</span>
+                        <strong id="total-premium">R$ 0,00</strong>
+                    </div>
+                    <div class="card accessibility-card">
+                        <h2>
+                            <i class="fa-solid fa-universal-access"></i>
+                            Índice de Acessibilidade
+                        </h2>
+
+                        <div class="accessibility-score">
+                            <strong id="accessibility-percentage">0%</strong>
+                            <span>do potencial de acessibilidade</span>
+                        </div>
+
+                        <div class="accessibility-info">
+                            <p>🟩 Essencial: Peso 1</p>
+                            <p>🟨 Recomendado: Peso 2</p>
+                            <p>🟪 Premium: Peso 3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="summary-row subtotal">
+                    <span>Subtotal Geral</span>
+                    <strong id="subtotal-geral">R$ 0,00</strong>
+                </div>
+
+                <!-- Configurações Adicionais -->
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label for="comissao-input">Comissão (%)</label>
+                        <input type="number" id="comissao-input" value="25" step="0.5" min="0">
+                        <span class="calc-value" id="comissao-valor">R$ 0,00</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="outras-despesas-input">Outras Despesas (R$)</label>
+                        <input type="number" id="outras-despesas-input" value="1000" step="100" min="0">
+                        <span class="calc-value" id="outras-despesas-valor">R$ 1.000,00</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="impostos-input">Impostos (%)</label>
+                        <input type="number" id="impostos-input" value="4" step="0.5" min="0">
+                        <span class="calc-value" id="impostos-valor">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="total-box">
+                    <span>Valor Final do Pacote</span>
+                    <h1 id="valor-final">R$ 0,00</h1>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
